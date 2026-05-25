@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Canon Chaos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/logo.png">
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background: linear-gradient(to bottom, #07152d, #0B1E3D, #13294B);
+      min-height:100vh;
+      font-family:'Poppins', sans-serif;
+      overflow-x:hidden;
+      color:white;
+    }
+
+    nav{
+width:100%;
+padding:20px;
+display:flex;
+justify-content:center;
+gap:25px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:1000;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#D4B483;
+text-shadow:0 0 10px white;
+}
+    .logo{
+      font-family:'Cormorant Garamond', serif;
+      font-size:40px;
+      color:#F5F9FF;
+      text-shadow:0 0 15px rgba(255,255,255,0.4);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:16px;
+    }
+
+    .nav-links a:hover{
+      color:#D4B483;
+      text-shadow:0 0 10px white;
+    }
+
+    .hero{
+      min-height:90vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px;
+      position:relative;
+    }
+
+    .hero h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:120px;
+      color:#F5F9FF;
+      text-shadow:0 0 30px rgba(255,255,255,0.4);
+      margin-bottom:20px;
+    }
+
+    .tagline{
+      font-family:'Playfair Display', serif;
+      font-size:40px;
+      color:#D4B483;
+      margin-bottom:60px;
+    }
+
+    .button-container{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:25px;
+      max-width:1000px;
+    }
+
+    .hero-btn{
+      padding:18px 35px;
+      border-radius:40px;
+      text-decoration:none;
+      color:white;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      transition:0.4s;
+      font-size:17px;
+      box-shadow:0 0 15px rgba(255,255,255,0.08);
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-8px);
+      background:#D4B483;
+      color:#07152d;
+      box-shadow:0 0 25px rgba(255,255,255,0.3);
+    }
+
+    .quote{
+      margin-top:70px;
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      color:#DCEBFF;
+      max-width:800px;
+      line-height:1.8;
+    }
+
+    .stars{
+      position:absolute;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      top:0;
+      left:0;
+      z-index:-1;
+    }
+
+    .stars span{
+      position:absolute;
+      width:3px;
+      height:3px;
+      background:white;
+      border-radius:50%;
+      animation:twinkle 5s linear infinite;
+      opacity:0.7;
+    }
+
+    @keyframes twinkle{
+      0%{
+        opacity:0.2;
+      }
+      50%{
+        opacity:1;
+      }
+      100%{
+        opacity:0.2;
+      }
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#DCEBFF;
+      font-size:14px;
+    }
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:70px;
+      }
+
+      .tagline{
+        font-size:28px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+
+<div class="logo">Canon Chaos</div>
+
+<div class="nav-links">
+
+  <a href="home.html">Home</a>
+  <a href="join.html">Join Community</a>
+  <a href="crew.html">Canon Crew</a>
+  <a href="community.html">Community</a>
+  <a href="contest.html">Contest Zone</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="stories.html">Stories</a>
+  <a href="about.html">About</a>
+
+</div>
+
+  </nav>
+
+  <section class="hero">
+
+<div class="stars">
+
+  <span style="top:10%; left:20%;"></span>
+  <span style="top:30%; left:70%;"></span>
+  <span style="top:60%; left:40%;"></span>
+  <span style="top:80%; left:80%;"></span>
+  <span style="top:50%; left:10%;"></span>
+  <span style="top:20%; left:90%;"></span>
+
+</div>
+
+<h1>Welcome to Canon Chaos</h1>
+
+<div class="tagline">
+  “Where stories become home.”
+</div>
+
+<div class="button-container">
+
+  <a href="join.html" class="hero-btn"> Join Community</a>
+
+  <a href="crew.html" class="hero-btn"> Meet Canon Crew</a>
+
+  <a href="community.html" class="hero-btn"> Explore Community</a>
+
+  <a href="contest.html" class="hero-btn"> Contest Zone</a>
+
+  <a href="gallery.html" class="hero-btn"> View Gallery</a>
+
+  <a href="stories.html" class="hero-btn"> Read Stories</a>
+
+  <a href="about.html" class="hero-btn"> About Canon Chaos</a>
+
+</div>
+
+<div class="quote">
+  A cinematic digital sanctuary for readers and writers — filled with emotions, stories, imagination, chaos, healing, and midnight thoughts wrapped beneath deep blue skies.
+</div>
+
+  </section>
+
+  <footer>
+    Canon Chaos © 2026 • Where stories become home.
+  </footer>
+
+</body>
+
+</html>
