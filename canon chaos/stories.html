@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Stories | Canon Chaos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:linear-gradient(to bottom,#07152d,#0B1E3D,#13294B);
+font-family:'Poppins',sans-serif;
+color:#F5F9FF;
+overflow-x:hidden;
+}
+
+nav{
+width:100%;
+padding:20px;
+display:flex;
+justify-content:center;
+gap:25px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:1000;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#D4B483;
+text-shadow:0 0 10px white;
+}
+
+.hero{
+text-align:center;
+padding:100px 20px 60px;
+}
+
+.hero h1{
+font-size:90px;
+font-family:'Cormorant Garamond',serif;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+.hero p{
+max-width:750px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+color:#DCEBFF;
+}
+
+.quote{
+margin-top:30px;
+font-size:28px;
+font-family:'Playfair Display',serif;
+color:#D4B483;
+}
+
+.story-container{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:40px;
+
+padding:60px 20px;
+
+}
+
+.story-card{
+
+width:320px;
+
+background:rgba(255,255,255,0.06);
+
+border-radius:25px;
+
+padding:25px;
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,0.1);
+
+box-shadow:0 0 20px rgba(255,255,255,0.05);
+
+transition:0.4s;
+
+}
+
+.story-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 25px rgba(255,255,255,0.15);
+
+}
+
+.story-cover{
+
+width:100%;
+
+height:400px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+margin-bottom:20px;
+
+}
+
+.story-title{
+
+font-size:32px;
+
+font-family:'Cormorant Garamond',serif;
+
+margin-bottom:10px;
+
+color:#D4B483;
+
+}
+
+.author{
+
+font-size:15px;
+
+margin-bottom:15px;
+
+color:#DCEBFF;
+
+}
+
+.tags{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:18px;
+
+}
+
+.tag{
+
+padding:6px 14px;
+
+background:rgba(255,255,255,0.08);
+
+border-radius:20px;
+
+font-size:12px;
+
+color:#D4B483;
+
+}
+
+.description{
+
+line-height:1.8;
+
+font-size:15px;
+
+color:#DCEBFF;
+
+margin-bottom:20px;
+
+}
+
+.read-btn{
+
+display:inline-block;
+
+padding:12px 25px;
+
+border-radius:30px;
+
+background:#D4B483;
+
+color:#07152d;
+
+text-decoration:none;
+
+font-weight:bold;
+
+transition:0.3s;
+
+}
+
+.read-btn:hover{
+
+background:white;
+
+transform:scale(1.05);
+
+}
+
+.featured{
+
+width:85%;
+
+margin:40px auto;
+
+padding:50px;
+
+background:rgba(255,255,255,0.06);
+
+border-radius:30px;
+
+text-align:center;
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,0.1);
+
+}
+
+.featured h2{
+
+font-size:60px;
+
+font-family:'Cormorant Garamond',serif;
+
+margin-bottom:20px;
+
+color:#D4B483;
+
+}
+
+.featured p{
+
+max-width:700px;
+
+margin:auto;
+
+line-height:1.8;
+
+color:#DCEBFF;
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:60px;
+}
+
+.featured h2{
+font-size:40px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<a href="index.html">Home</a> 
+<a href="crew.html">Canon Crew</a> 
+<a href="community.html">Community</a> 
+<a href="stories.html">Stories</a> 
+<a href="gallery.html">Gallery</a> 
+<a href="contest.html">Contest</a> 
+<a href="about.html">About</a>
+
+</nav>
+
+<section class="hero">
+
+<h1>Stories</h1>
+
+<p>
+A collection of emotions wrapped in pages, memories, heartbreak, imagination, and late-night thoughts from the Canon Crew.
+</p>
+
+<div class="quote">
+“Some stories don’t end when the chapter closes.”
+</div>
+
+</section>
+
+<section class="featured">
+
+<h2>Featured Story Of The Month</h2>
+
+<p>
+“The Boy Who Stayed In Her Poetry” became one of the most loved emotional stories inside Canon Chaos this month — a soft tale about love, timing, and memories that never truly leave.
+</p>
+
+</section>
+
+<section class="story-container">
+
+<div class="story-card">
+
+<img src="https://i.pinimg.com/736x/52/0d/67/520d67d6c1f6d4db62f63e27b5ef0c4d.jpg"
+class="story-cover">
+
+<div class="story-title">
+Until The Last Page
+</div>
+
+<div class="author">
+by Honey
+</div>
+
+<div class="tags">
+
+<div class="tag">Soft Romance</div>
+
+<div class="tag">Friends to Lovers</div>
+
+</div>
+
+<div class="description">
+Two people who spent years pretending friendship was enough — until silence became harder than love.
+</div>
+
+<a href="story1.html" class="read-btn">
+Read Story
+</a>
+
+</div>
+
+<div class="story-card">
+
+<img src="https://i.pinimg.com/736x/13/7c/55/137c55df8d6a65fcb6f89d1f02c3f9d6.jpg"
+class="story-cover">
+
+<div class="story-title">
+Moonlight & Melancholy
+</div>
+
+<div class="author">
+by Eva
+</div>
+
+<div class="tags">
+
+<div class="tag">Heartbreak</div>
+
+<div class="tag">Girlhood</div>
+
+</div>
+
+<div class="description">
+Some people leave quietly — but their memories stay loud enough to echo forever.
+</div>
+
+<a href="story2.html" class="read-btn">
+Read Story
+</a>
+
+</div>
+
+<div class="story-card">
+
+<img src="https://i.pinimg.com/736x/e4/89/88/e48988c8fc95f6f85ec8b2c5b4a3d4fd.jpg"
+class="story-cover">
+
+<div class="story-title">
+If Home Was A Person
+</div>
+
+<div class="author">
+by Canon Crew
+</div>
+
+<div class="tags">
+
+<div class="tag">Untouched Love</div>
+
+<div class="tag">Emotional</div>
+
+</div>
+
+<div class="description">
+A story about finding comfort inside someone long before realizing it was love.
+</div>
+
+<a href="story3.html" class="read-btn">
+Read Story
+</a>
+
+</div>
+
+</section>
+
+</body>
+
+</html>
