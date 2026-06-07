@@ -30,11 +30,10 @@ overflow-x:hidden;
 }
 
 nav{
-width:100%;
-padding:20px;
 display:flex;
 justify-content:center;
-gap:25px;
+gap:30px;
+padding:20px;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
 position:sticky;
@@ -46,12 +45,12 @@ flex-wrap:wrap;
 nav a{
 color:white;
 text-decoration:none;
+font-size:18px;
 transition:0.3s;
 }
 
 nav a:hover{
 color:#D4B483;
-text-shadow:0 0 10px white;
 }
 
 .hero{
@@ -278,8 +277,8 @@ What should be the next contest theme?
 <label>
 <input type="radio"
 name="theme"
-value="soft">
-Soft Romance
+value="fantasy">
+fantasy
 </label>
 
 <label>
@@ -292,15 +291,15 @@ Thriller
 <label>
 <input type="radio"
 name="theme"
-value="dark">
-Dark Romance
+value="soft">
+soft
 </label>
 
 <label>
 <input type="radio"
 name="theme"
-value="untouched">
-Untouched Love
+value="sciencefiction">
+science fiction
 </label>
 
 </div>
@@ -316,11 +315,11 @@ Submit Vote
 
 <div class="progress-box">
 
-Soft Romance — <span id="softCount">0</span>
+Fantasy — <span id="fantasyCount">0</span>
 
 <div class="progress-bar">
 <div class="progress"
-id="softBar"></div>
+id="fantasyBar"></div>
 </div>
 
 </div>
@@ -338,22 +337,22 @@ id="thrillerBar"></div>
 
 <div class="progress-box">
 
-Dark Romance — <span id="darkCount">0</span>
+Soft — <span id="softCount">0</span>
 
 <div class="progress-bar">
 <div class="progress"
-id="darkBar"></div>
+id="softBar"></div>
 </div>
 
 </div>
 
 <div class="progress-box">
 
-Untouched Love — <span id="untouchedCount">0</span>
+Science Fiction — <span id="sciencefictionCount">0</span>
 
 <div class="progress-bar">
 <div class="progress"
-id="untouchedBar"></div>
+id="sciencefictionBar"></div>
 </div>
 
 </div>
@@ -400,62 +399,100 @@ Post Anonymously
 
 </button>
 
+<div id="topConfession"></div>
+
 <div id="confessionContainer"></div>
 
 </section>
 
-<script>
+<script type="module">
 
-let votes = JSON.parse(
-localStorage.getItem("canonVotes")
-) || {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-soft:0,
-thriller:0,
-dark:0,
-untouched:0
+import {
+getFirestore,
+doc,
+getDoc,
+getDocs,
+collection,
+query,
+where,
+orderBy,
+updateDoc,
+deleteDoc,
+increment,
+addDoc,
+serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const firebaseConfig = {
+
+apiKey: "AIzaSyDJZU6vWFhEp70CWtn4zgs3LMBFkaD6HwU",
+
+authDomain: "canon-chaos.firebaseapp.com",
+
+projectId: "canon-chaos",
+
+storageBucket: "canon-chaos.firebasestorage.app",
+
+messagingSenderId: "490461955917",
+
+appId: "1:490461955917:web:081df7a6ce3c8cf3f5d904"
 
 };
 
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+const pollRef = doc(db, "polls", "contestTheme");
+
+let votes = {
+
+fantasy:0,
+thriller:0,
+soft:0,
+sciencefiction:0
+
+};
 function updatePoll(){
 
 let total =
-votes.soft +
+votes.fantasy +
 votes.thriller +
-votes.dark +
-votes.untouched;
+votes.soft +
+votes.sciencefiction;
 
 if(total <= 0){
 total = 1;
 }
 
-document.getElementById("softCount").innerText =
-votes.soft;
+document.getElementById("fantasyCount").innerText =
+votes.fantasy;
 
 document.getElementById("thrillerCount").innerText =
 votes.thriller;
 
-document.getElementById("darkCount").innerText =
-votes.dark;
+document.getElementById("softCount").innerText =
+votes.soft;
 
-document.getElementById("untouchedCount").innerText =
-votes.untouched;
+document.getElementById("sciencefictionCount").innerText =
+votes.sciencefiction;
 
-document.getElementById("softBar").style.width =
-(votes.soft / total) * 100 + "%";
+document.getElementById("fantasyBar").style.width =
+(votes.fantasy / total) * 100 + "%";
 
 document.getElementById("thrillerBar").style.width =
 (votes.thriller / total) * 100 + "%";
 
-document.getElementById("darkBar").style.width =
-(votes.dark / total) * 100 + "%";
+document.getElementById("softBar").style.width =
+(votes.soft / total) * 100 + "%";
 
-document.getElementById("untouchedBar").style.width =
-(votes.untouched / total) * 100 + "%";
+document.getElementById("sciencefictionBar").style.width =
+(votes.sciencefiction / total) * 100 + "%";
 
 }
 
-function voteTheme(){
+async function voteTheme() {
 
 let selected =
 document.querySelector(
@@ -469,36 +506,333 @@ return;
 
 }
 
-let previousVote =
-localStorage.getItem("userVote");
+const newVote =
+selected.value;
 
-if(previousVote && votes[previousVote] > 0){
+const oldVote =
+localStorage.getItem("contestVote");
 
-votes[previousVote]--;
+if(oldVote === newVote){
 
-}
-
-votes[selected.value]++;
-
-localStorage.setItem(
-"userVote",
-selected.value
-);
-
-localStorage.setItem(
-"canonVotes",
-JSON.stringify(votes)
-);
-
-updatePoll();
+alert("You already voted for this theme.");
+return;
 
 }
 
+if(oldVote){
+
+await updateDoc(
+pollRef,
+{
+[oldVote]: increment(-1)
+}
+);
+
+}
+
+await updateDoc(
+pollRef,
+{
+[newVote]: increment(1)
+}
+);
+
+localStorage.setItem(
+"contestVote",
+newVote
+);
+
+loadVotes();
+
+}
+
+async function loadVotes(){
+
+const snapshot =
+await getDoc(pollRef);
+
+const data =
+snapshot.data();
+
+votes = {
+
+fantasy: data.fantasy || 0,
+thriller: data.thriller || 0,
+soft: data.soft || 0,
+sciencefiction: data.sciencefiction || 0
+
+};
+
 updatePoll();
 
+const savedVote =
+localStorage.getItem("contestVote");
+
+if(savedVote){
+
+const radio =
+document.querySelector(
+`input[value="${savedVote}"]`
+);
+
+if(radio){
+radio.checked = true;
+}
+
+}
+
+}
+
+function timeAgo(date){
+
+const seconds =
+Math.floor(
+(Date.now() - date.getTime()) / 1000
+);
+
+if(seconds < 60)
+return `${seconds}s ago`;
+
+const minutes =
+Math.floor(seconds / 60);
+
+if(minutes < 60)
+return `${minutes}m ago`;
+
+const hours =
+Math.floor(minutes / 60);
+
+if(hours < 24)
+return `${hours}h ago`;
+
+const days =
+Math.floor(hours / 24);
+
+if(days < 7)
+return `${days}d ago`;
+
+const weeks =
+Math.floor(days / 7);
+
+if(weeks < 52)
+return `${weeks}w ago`;
+
+const years =
+Math.floor(weeks / 52);
+
+return `${years}y ago`;
+
+}
+
+async function loadConfessions(){
+
+let container =
+document.getElementById("confessionContainer");
+
+container.innerHTML = "";
+
+const q =
+query(
+collection(db,"confessions"),
+orderBy("createdAt","desc")
+);
+
+const snapshot =
+await getDocs(q);
+
+let topConfession = null;
+let maxLikes = -1;
+
+snapshot.forEach(docSnap => {
+
+const data = docSnap.data();
+
+if((data.likes || 0) > maxLikes){
+
+maxLikes = data.likes || 0;
+topConfession = data;
+
+}
+
+});
+
+if(topConfession){
+
+document.getElementById(
+"topConfession"
+).innerHTML = `
+
+<div
+style="
+background:rgba(212,180,131,.12);
+border:1px solid #D4B483;
+padding:25px;
+border-radius:20px;
+margin-bottom:25px;
+">
+
+<div style="
+color:#D4B483;
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+">
+🏆 Most Loved Confession
+</div>
+
+<div style="
+margin-bottom:10px;
+">
+${topConfession.message}
+</div>
+
+<div>
+❤️ ${topConfession.likes}
+</div>
+
+</div>
+
+`;
+
+}
 
 
-function addConfession(){
+for(const docSnap of snapshot.docs){
+
+const confessionId =
+docSnap.id;
+
+const confession =
+docSnap.data();
+
+const myOwnerId =
+localStorage.getItem("ownerId");
+
+const canDelete =
+confession.ownerId === myOwnerId;
+
+const time =
+confession.createdAt
+? timeAgo(confession.createdAt.toDate())
+: "now";
+
+const likedPosts =
+JSON.parse(
+localStorage.getItem("likedPosts")
+) || [];
+
+const hasLiked =
+likedPosts.includes(confessionId);
+
+container.innerHTML += `
+
+<div class="confession-card">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+">
+
+<span style="
+font-weight:bold;
+color:#D4B483;
+">
+Anonymous
+</span>
+
+<span style="
+font-size:12px;
+opacity:.7;
+">
+${time}
+</span>
+
+</div>
+
+<div style="margin-top:10px;">
+${confession.message}
+</div>
+
+<div style="
+margin-top:15px;
+font-size:14px;
+opacity:.9;
+">
+
+<button
+onclick="likeConfession('${confessionId}')"
+style="
+background:none;
+border:none;
+cursor:pointer;
+font-size:16px;
+color:${hasLiked ? "#D4B483" : "white"};
+"
+>
+
+${hasLiked
+? "❤️ Liked"
+: `❤️ ${confession.likes}`}
+
+</button>
+
+${canDelete ? `
+<button
+onclick="deleteConfession('${confessionId}')"
+style="
+margin-left:15px;
+background:none;
+border:none;
+color:#ff6b6b;
+cursor:pointer;
+font-size:14px;
+">
+🗑 Delete
+</button>
+` : ""}
+
+</div>
+
+</div>
+
+`;
+
+}
+}
+async function likeConfession(id){
+
+let likedPosts =
+JSON.parse(
+localStorage.getItem("likedPosts")
+) || [];
+
+if(likedPosts.includes(id)){
+return;
+}
+const confessionRef =
+doc(db,"confessions",id);
+
+await updateDoc(
+confessionRef,
+{
+likes: increment(1)
+}
+);
+
+likedPosts.push(id);
+
+localStorage.setItem(
+"likedPosts",
+JSON.stringify(likedPosts)
+);
+
+loadConfessions();
+
+}
+
+async function addConfession(){
 
 let input =
 document.getElementById("confessionInput");
@@ -513,57 +847,51 @@ return;
 
 }
 
-if(message.length > 60){
+if(message.length > 260){
 
-alert("Message must be less than 60 letters.");
+alert("Message must be less than 260 characters.");
 return;
 
 }
 
-let confessions =
-JSON.parse(
-localStorage.getItem("canonConfessions")
-) || [];
+let ownerId =
+localStorage.getItem("ownerId");
 
-confessions.unshift(message);
+if(!ownerId){
+
+ownerId =
+crypto.randomUUID();
 
 localStorage.setItem(
-"canonConfessions",
-JSON.stringify(confessions)
+"ownerId",
+ownerId
+);
+
+}
+
+await addDoc(
+collection(db,"confessions"),
+{
+message: message,
+likes: 0,
+ownerId: ownerId,
+createdAt: serverTimestamp()
+}
 );
 
 input.value = "";
 
-displayConfessions();
+loadConfessions();
 
 }
 
-function displayConfessions(){
 
-let container =
-document.getElementById("confessionContainer");
-
-let confessions =
-JSON.parse(
-localStorage.getItem("canonConfessions")
-) || [];
-
-container.innerHTML = "";
-
-confessions.forEach(confession => {
-
-container.innerHTML += `
-<div class="confession-card">
-${confession}
-</div>
-`;
-
-});
-
-}
-
-displayConfessions();
-
+loadVotes();
+loadConfessions();
+window.voteTheme = voteTheme;
+window.addConfession = addConfession;
+window.likeConfession = likeConfession;
+window.deleteConfession = deleteConfession;
 </script>
 
 </body>
