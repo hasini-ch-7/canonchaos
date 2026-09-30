@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Canon Crew | Canon Chaos</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 25%,
+                    rgba(30, 58, 95, 0.48),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    180deg,
+                    #050F1E,
+                    #071426,
+                    #0B1E3D
+                );
+
+            color: #F5F9FF;
+
+            font-family: 'Poppins', sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 110px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 68px;
+
+            z-index: 1000;
+
+            background:
+                rgba(4, 14, 29, 0.92);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .logo {
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 36px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+
+        .logo:hover {
+            color: #D4B483;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 46px;
+        }
+
+
+        .nav-links a {
+            position: relative;
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 400;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #D4B483;
+        }
+
+
+        .nav-links a.active {
+            color: #D4B483;
+        }
+
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -12px;
+
+            width: 28px;
+            height: 1px;
+
+            background: #D4B483;
+
+            transform: translateX(-50%);
+        }
+
+
+        .nav-join {
+            padding: 12px 29px;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.65);
+
+            border-radius: 30px;
+
+            color: #F5F9FF !important;
+        }
+
+
+        .nav-join:hover {
+            background: #D4B483;
+
+            color: #071426 !important;
+
+            border-color: #D4B483;
+        }
+
+
+        /* =========================
+           STARS
+        ========================= */
+
+        .stars {
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        .stars span {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background: #F5F9FF;
+
+            opacity: 0.4;
+
+            animation:
+                twinkle 4s ease-in-out infinite;
+        }
+
+
+        .stars span:nth-child(1) {
+            top: 18%;
+            left: 10%;
+        }
+
+        .stars span:nth-child(2) {
+            top: 27%;
+            left: 72%;
+            animation-delay: 1s;
+        }
+
+        .stars span:nth-child(3) {
+            top: 52%;
+            left: 18%;
+            animation-delay: 2s;
+        }
+
+        .stars span:nth-child(4) {
+            top: 62%;
+            left: 82%;
+            animation-delay: 1.5s;
+        }
+
+        .stars span:nth-child(5) {
+            top: 78%;
+            left: 48%;
+            animation-delay: 0.5s;
+        }
+
+        .stars span:nth-child(6) {
+            top: 38%;
+            left: 91%;
+            animation-delay: 2.5s;
+        }
+
+        .stars span:nth-child(7) {
+            top: 15%;
+            left: 45%;
+            animation-delay: 1.2s;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.5);
+            }
+
+        }
+
+
+        /* =========================
+           CREW PAGE
+        ========================= */
+
+        .crew-page {
+
+            min-height: 100vh;
+
+            padding:
+                150px 6% 80px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .crew-header {
+
+            text-align: center;
+
+            max-width: 850px;
+
+            margin:
+                0 auto 60px;
+        }
+
+
+        .eyebrow {
+
+            color: #D4B483;
+
+            font-size: 12px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 16px;
+        }
+
+
+        .crew-header h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(65px, 9vw, 105px);
+
+            font-weight: 600;
+
+            line-height: 0.95;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 22px;
+
+            text-shadow:
+                0 0 35px
+                rgba(255,255,255,0.18);
+        }
+
+
+        .crew-header p {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #C8D7EA;
+
+            font-size: 15px;
+
+            line-height: 1.9;
+        }
+
+
+        .quote {
+
+            margin-top: 20px;
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            color: #D4B483;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           CREW GRID
+        ========================= */
+
+        .crew-grid {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* =========================
+           CREW CARD
+        ========================= */
+
+        .crew-card {
+
+            min-height: 250px;
+
+            padding:
+                30px 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(212,180,131,0.24);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.2);
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        .crew-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(212,180,131,0.6);
+
+            box-shadow:
+                0 22px 45px
+                rgba(0,0,0,0.32);
+        }
+
+
+        .card-line {
+
+            width: 48px;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #D4B483,
+                    transparent
+                );
+
+            margin-bottom: 17px;
+        }
+
+
+        .username {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 30px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            color: #F5F9FF;
+
+            margin-bottom: 8px;
+        }
+
+
+        .role {
+
+            color: #D4B483;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .bio {
+
+            color: #C8D7EA;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            max-width: 310px;
+
+            min-height: 70px;
+        }
+
+
+        /* =========================
+           SOCIAL LINKS
+        ========================= */
+
+        .socials {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .socials a {
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.3);
+
+            border-radius: 50%;
+
+            color: #C8D7EA;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 0.5px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .socials a:hover {
+
+            background: #D4B483;
+
+            color: #071426;
+
+            border-color: #D4B483;
+        }
+
+
+        /* =========================
+           BOTTOM LINE
+        ========================= */
+
+        .crew-footer {
+
+            text-align: center;
+
+            margin-top: 55px;
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            color:
+                rgba(245,249,255,0.5);
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .crew-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                max-width: 760px;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+
+                height: auto;
+
+                min-height: 90px;
+
+                padding:
+                    18px 25px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .logo {
+                font-size: 30px;
+            }
+
+
+            .nav-links {
+
+                gap: 20px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+
+            .nav-join {
+                padding:
+                    8px 18px;
+            }
+
+
+            .crew-page {
+
+                padding:
+                    145px 20px 60px;
+            }
+
+
+            .crew-header h1 {
+
+                font-size: 60px;
+            }
+
+
+            .crew-grid {
+
+                grid-template-columns: 1fr;
+
+                max-width: 500px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 26px;
+            }
+
+
+            .nav-links {
+                gap: 13px;
+            }
+
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+
+            .crew-header h1 {
+                font-size: 52px;
+            }
+
+
+            .crew-card {
+                min-height: 230px;
+
+                padding:
+                    27px 22px;
+            }
+
+
+            .username {
+                font-size: 27px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND STARS
+    ========================= -->
+
+    <div class="stars">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            Canon Chaos
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="crew.html" class="active">
+                Crew
+            </a>
+
+            <a href="community.html">
+                Community
+            </a>
+
+            <a href="contest.html">
+                Contest
+            </a>
+
+            <a href="join.html" class="nav-join">
+                Join
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         CREW PAGE
+    ========================= -->
+
+    <main class="crew-page">
+
+
+        <!-- HEADER -->
+
+        <section class="crew-header">
+
+            <p class="eyebrow">
+                THE HEART BEHIND THE CHAOS
+            </p>
+
+
+            <h1>
+                Canon Crew
+            </h1>
+
+
+            <p>
+                The people behind the stories, creativity,
+                conversations, contests, and beautiful chaos
+                that make Canon Chaos what it is.
+            </p>
+
+
+            <div class="quote">
+                “We write. We dream. We create. Together.”
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CREW MEMBERS
+        ========================= -->
+
+        <section class="crew-grid">
+
+
+            <!-- HONEY -->
+
+            <article class="crew-card">
+
+                <div class="card-line"></div>
+
+                <h2 class="username">
+                    @butterfly_talezz
+                </h2>
+
+                <p class="role">
+                    Founder
+                </p>
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/butterfly_talezz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IG
+                    </a>
+
+                    <a
+                        href="https://www.wattpad.com/user/butterfly_talezz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        W
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- EVA -->
+
+            <article class="crew-card">
+
+                <div class="card-line"></div>
+
+                <h2 class="username">
+                    @evariswrts
+                </h2>
+
+                <p class="role">
+                    Co-Founder
+                </p>
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/evariswrts"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IG
+                    </a>
+
+                    <a
+                        href="https://www.wattpad.com/user/evariswrts"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        W
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="crew-card">
+
+                <div class="card-line"></div>
+
+                <h2 class="username">
+                    @author_arohini
+                </h2>
+
+                <p class="role">
+                    Co-admin
+                </p>
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/author_arohini"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IG
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="crew-card">
+
+                <div class="card-line"></div>
+
+                <h2 class="username">
+                    @preetyflowerwrites
+                </h2>
+
+                <p class="role">
+                    Member
+                </p>
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/preetyflowerwrites"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IG
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="crew-card">
+
+                <div class="card-line"></div>
+
+                <h2 class="username">
+                    @_rk_fictions_
+                </h2>
+
+                <p class="role">
+                    Member
+                </p>
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/_rk_fictions_"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IG
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- ISHA -->
+
+            <article class="crew-card">
+
+                <div class="card-line"></div>
+
+                <h2 class="username">
+                    @munmunverse
+                </h2>
+
+                <p class="role">
+                    Member 
+                </p>
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/munmunverse"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        IG
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <div class="crew-footer">
+            “Different stories. Different souls. One beautiful chaos.”
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

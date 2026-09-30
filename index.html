@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Canon Chaos</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(30, 58, 95, 0.5),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    180deg,
+                    #050F1E,
+                    #071426,
+                    #0B1E3D
+                );
+
+            color: #F5F9FF;
+
+            font-family: 'Poppins', sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 110px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 68px;
+
+            z-index: 1000;
+
+            background:
+                rgba(4, 14, 29, 0.92);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .logo {
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 36px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+
+        .logo:hover {
+            color: #D4B483;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 46px;
+        }
+
+
+        .nav-links a {
+            position: relative;
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 400;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #D4B483;
+        }
+
+
+        .nav-links a.active {
+            color: #D4B483;
+        }
+
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -12px;
+
+            width: 28px;
+            height: 1px;
+
+            background: #D4B483;
+
+            transform: translateX(-50%);
+        }
+
+
+        .nav-join {
+            padding: 12px 29px;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.65);
+
+            border-radius: 30px;
+
+            color: #F5F9FF !important;
+        }
+
+
+        .nav-join:hover {
+            background: #D4B483;
+
+            color: #071426 !important;
+
+            border-color: #D4B483;
+        }
+
+
+        /* =========================
+           STARS
+        ========================= */
+
+        .stars {
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        .stars span {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background: #F5F9FF;
+
+            opacity: 0.4;
+
+            animation:
+                twinkle 4s ease-in-out infinite;
+        }
+
+
+        .stars span:nth-child(1) {
+            top: 18%;
+            left: 12%;
+        }
+
+        .stars span:nth-child(2) {
+            top: 30%;
+            left: 72%;
+            animation-delay: 1s;
+        }
+
+        .stars span:nth-child(3) {
+            top: 62%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .stars span:nth-child(4) {
+            top: 72%;
+            left: 82%;
+            animation-delay: 1.5s;
+        }
+
+        .stars span:nth-child(5) {
+            top: 45%;
+            left: 50%;
+            animation-delay: 0.5s;
+        }
+
+        .stars span:nth-child(6) {
+            top: 22%;
+            left: 88%;
+            animation-delay: 2.5s;
+        }
+
+        .stars span:nth-child(7) {
+            top: 80%;
+            left: 40%;
+            animation-delay: 1.2s;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.5);
+            }
+
+        }
+
+
+        /* =========================
+           HOME
+        ========================= */
+
+        .home {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                150px 25px 80px;
+
+            position: relative;
+        }
+
+
+        .home-content {
+
+            max-width: 950px;
+
+            margin: auto;
+        }
+
+
+        .eyebrow {
+
+            color: #D4B483;
+
+            font-size: 12px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+        }
+
+
+        .home h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(65px, 10vw, 125px);
+
+            font-weight: 600;
+
+            line-height: 0.9;
+
+            letter-spacing: 5px;
+
+            color: #F5F9FF;
+
+            margin-bottom: 25px;
+
+            text-shadow:
+                0 0 35px
+                rgba(255,255,255,0.18);
+        }
+
+
+        .tagline {
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            color: #D4B483;
+
+            font-size:
+                clamp(24px, 4vw, 40px);
+
+            margin-bottom: 28px;
+        }
+
+
+        .description {
+
+            max-width: 720px;
+
+            margin: auto;
+
+            color: #C8D7EA;
+
+            font-size: 15px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           HOME BUTTONS
+        ========================= */
+
+        .home-actions {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 40px;
+        }
+
+
+        .home-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                13px 27px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.5);
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.35s ease;
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        .home-btn:hover {
+
+            background: #D4B483;
+
+            color: #071426;
+
+            border-color: #D4B483;
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(212,180,131,0.18);
+        }
+
+
+        .home-btn.primary {
+
+            background:
+                rgba(212,180,131,0.12);
+
+            border-color:
+                rgba(212,180,131,0.75);
+        }
+
+
+        /* =========================
+           QUOTE
+        ========================= */
+
+        .home-quote {
+
+            margin-top: 55px;
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            color:
+                rgba(245,249,255,0.65);
+        }
+
+
+        /* =========================
+           DECORATIVE LINE
+        ========================= */
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-top: 42px;
+        }
+
+
+        .divider::before,
+        .divider::after {
+
+            content: "";
+
+            width: 70px;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(212,180,131,0.7)
+                );
+        }
+
+
+        .divider::after {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(212,180,131,0.7),
+                    transparent
+                );
+        }
+
+
+        .divider span {
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #D4B483;
+
+            box-shadow:
+                0 0 12px
+                rgba(212,180,131,0.5);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                30px 20px;
+
+            color:
+                rgba(245,249,255,0.4);
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+
+                height: auto;
+
+                min-height: 90px;
+
+                padding:
+                    18px 25px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .logo {
+                font-size: 30px;
+            }
+
+
+            .nav-links {
+
+                gap: 20px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+
+            .nav-join {
+                padding:
+                    8px 18px;
+            }
+
+
+            .home {
+
+                padding:
+                    145px 20px 60px;
+            }
+
+
+            .home h1 {
+
+                font-size:
+                    clamp(55px, 15vw, 75px);
+
+                letter-spacing: 2px;
+            }
+
+
+            .tagline {
+                font-size: 27px;
+            }
+
+
+            .description {
+                font-size: 14px;
+            }
+
+
+            .home-actions {
+
+                flex-direction: column;
+
+                width: 100%;
+            }
+
+
+            .home-btn {
+
+                width:
+                    min(260px, 100%);
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 26px;
+            }
+
+
+            .nav-links {
+                gap: 13px;
+            }
+
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+
+            .home h1 {
+                font-size: 52px;
+            }
+
+
+            .tagline {
+                font-size: 23px;
+            }
+
+
+            .home-quote {
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND STARS
+    ========================= -->
+
+    <div class="stars">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            Canon Chaos
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <a href="crew.html">
+                Crew
+            </a>
+
+            <a href="community.html">
+                Community
+            </a>
+
+            <a href="contest.html">
+                Contest
+            </a>
+
+            <a href="join.html" class="nav-join">
+                Join
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HOME
+    ========================= -->
+
+    <main class="home">
+
+        <section class="home-content">
+
+            <p class="eyebrow">
+                THE HEART BEHIND THE CHAOS
+            </p>
+
+
+            <h1>
+                Canon Chaos
+            </h1>
+
+
+            <div class="tagline">
+                “Where stories become home.”
+            </div>
+
+
+            <p class="description">
+                A cinematic digital sanctuary for readers
+                and writers — filled with emotions, stories,
+                imagination, chaos, healing, and midnight
+                thoughts wrapped beneath deep blue skies.
+            </p>
+
+
+            <!-- =========================
+                 MAIN ACTIONS
+            ========================= -->
+
+            <div class="home-actions">
+
+                <a
+                    href="join.html"
+                    class="home-btn primary"
+                >
+                    Join Community
+                </a>
+
+
+                <a
+                    href="crew.html"
+                    class="home-btn"
+                >
+                    Meet Canon Crew
+                </a>
+
+
+                <a
+                    href="community.html"
+                    class="home-btn"
+                >
+                    Explore Community
+                </a>
+
+
+                <a
+                    href="contest.html"
+                    class="home-btn"
+                >
+                    Contest Zone
+                </a>
+
+            </div>
+
+
+            <div class="divider">
+                <span></span>
+            </div>
+
+
+            <div class="home-quote">
+                “A place for stories that stay,
+                people who understand,
+                and chaos worth remembering.”
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        © 2026 CANON CHAOS · WHERE STORIES BECOME HOME.
+    </footer>
+
+
+</body>
+
+</html>

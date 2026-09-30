@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Join Community | Canon Chaos</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 25%,
+                    rgba(30, 58, 95, 0.45),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    180deg,
+                    #050F1E,
+                    #071426,
+                    #0B1E3D
+                );
+
+            color: #F5F9FF;
+
+            font-family: 'Poppins', sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 110px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 68px;
+
+            z-index: 1000;
+
+            background:
+                rgba(4, 14, 29, 0.92);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .logo {
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 36px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+
+        .logo:hover {
+            color: #D4B483;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 46px;
+        }
+
+
+        .nav-links a {
+            position: relative;
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 400;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #D4B483;
+        }
+
+
+        .nav-links a.active {
+            color: #D4B483;
+        }
+
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -12px;
+
+            width: 28px;
+            height: 1px;
+
+            background: #D4B483;
+
+            transform: translateX(-50%);
+        }
+
+
+        .nav-join {
+            padding: 12px 29px;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.65);
+
+            border-radius: 30px;
+
+            color: #F5F9FF !important;
+        }
+
+
+        .nav-join:hover {
+            background: #D4B483;
+
+            color: #071426 !important;
+
+            border-color: #D4B483;
+        }
+
+
+        /* =========================
+           STARS
+        ========================= */
+
+        .stars {
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        .stars span {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background: #F5F9FF;
+
+            opacity: 0.4;
+
+            animation:
+                twinkle 4s ease-in-out infinite;
+        }
+
+
+        .stars span:nth-child(1) {
+            top: 18%;
+            left: 10%;
+        }
+
+        .stars span:nth-child(2) {
+            top: 28%;
+            left: 27%;
+            animation-delay: 1s;
+        }
+
+        .stars span:nth-child(3) {
+            top: 16%;
+            left: 65%;
+            animation-delay: 2s;
+        }
+
+        .stars span:nth-child(4) {
+            top: 45%;
+            left: 84%;
+            animation-delay: 1.5s;
+        }
+
+        .stars span:nth-child(5) {
+            top: 72%;
+            left: 14%;
+            animation-delay: 0.5s;
+        }
+
+        .stars span:nth-child(6) {
+            top: 80%;
+            left: 78%;
+            animation-delay: 2.5s;
+        }
+
+        .stars span:nth-child(7) {
+            top: 55%;
+            left: 45%;
+            animation-delay: 1.2s;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.6);
+            }
+
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .join-page {
+
+            min-height: 100vh;
+
+            padding:
+                155px 6% 90px;
+        }
+
+
+        .join-header {
+
+            text-align: center;
+
+            max-width: 760px;
+
+            margin:
+                0 auto 55px;
+        }
+
+
+        .eyebrow {
+
+            color: #D4B483;
+
+            font-size: 12px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+
+        .join-header h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(58px, 8vw, 100px);
+
+            font-weight: 600;
+
+            letter-spacing: 4px;
+
+            line-height: 0.95;
+
+            margin-bottom: 20px;
+
+            text-shadow:
+                0 0 30px
+                rgba(255,255,255,0.18);
+        }
+
+
+        .join-header p {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #C8D7EA;
+
+            font-size: 15px;
+
+            line-height: 1.9;
+        }
+
+
+        .quote {
+
+            margin-top: 20px;
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            color: #D4B483;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           STEPS
+        ========================= */
+
+        .steps {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .step-card {
+
+            min-height: 250px;
+
+            padding: 32px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(212,180,131,0.25);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.2);
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        .step-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(212,180,131,0.6);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,0.3);
+        }
+
+
+        .step-number {
+
+            color: #D4B483;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+
+        .step-card h2 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            color: #F5F9FF;
+
+            margin-bottom: 12px;
+        }
+
+
+        .step-card p {
+
+            color: #C8D7EA;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            max-width: 500px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================
+           FOLLOW BUTTONS
+        ========================= */
+
+        .step-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            align-self: flex-start;
+
+            padding:
+                11px 22px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.5);
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+
+            transition: 0.35s ease;
+        }
+
+
+        .step-btn:hover {
+
+            background: #D4B483;
+
+            color: #071426;
+
+            border-color: #D4B483;
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =========================
+           FINAL STEP
+        ========================= */
+
+        .final-step {
+
+            grid-column:
+                1 / -1;
+
+            text-align: center;
+
+            align-items: center;
+
+            min-height: 290px;
+        }
+
+
+        .final-step p {
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .final-step .step-btn {
+
+            align-self: center;
+
+            padding:
+                13px 30px;
+        }
+
+
+        /* =========================
+           FOOTER QUOTE
+        ========================= */
+
+        .join-footer {
+
+            text-align: center;
+
+            margin-top: 55px;
+
+            color: rgba(245,249,255,0.55);
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+
+                height: auto;
+
+                min-height: 90px;
+
+                padding:
+                    18px 25px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .logo {
+                font-size: 30px;
+            }
+
+
+            .nav-links {
+
+                gap: 20px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+
+            .nav-join {
+                padding:
+                    8px 18px;
+            }
+
+
+            .join-page {
+
+                padding:
+                    145px 20px 60px;
+            }
+
+
+            .join-header h1 {
+
+                font-size: 58px;
+            }
+
+
+            .steps {
+
+                grid-template-columns: 1fr;
+
+                max-width: 500px;
+            }
+
+
+            .final-step {
+
+                grid-column: auto;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 26px;
+            }
+
+
+            .nav-links {
+                gap: 13px;
+            }
+
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+
+            .join-header h1 {
+                font-size: 50px;
+            }
+
+
+            .step-card {
+                padding: 25px;
+            }
+
+
+            .step-card h2 {
+                font-size: 33px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND STARS
+    ========================= -->
+
+    <div class="stars">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            Canon Chaos
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="crew.html">
+                Crew
+            </a>
+
+            <a href="community.html">
+                Community
+            </a>
+
+            <a href="contest.html">
+                Contest
+            </a>
+
+            <a href="join.html" class="active nav-join">
+                Join
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         JOIN PAGE
+    ========================= -->
+
+    <main class="join-page">
+
+
+        <!-- HEADER -->
+
+        <section class="join-header">
+
+            <p class="eyebrow">
+                BECOME PART OF THE CHAOS
+            </p>
+
+
+            <h1>
+                Join Canon Chaos
+            </h1>
+
+
+            <p>
+                Some communities feel like home
+                before you even enter them.
+            </p>
+
+
+            <div class="quote">
+                Find your people. Find your stories.
+                Find your chaos.
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STEPS
+        ========================= -->
+
+        <section class="steps">
+
+
+            <!-- STEP 1 -->
+
+            <div class="step-card">
+
+                <span class="step-number">
+                    Step 01
+                </span>
+
+
+                <h2>
+                    Follow Admin 1
+                </h2>
+                <a
+                    href="https://instagram.com/butterfly_talezz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="step-btn"
+                >
+                    Follow @butterfly_talezz
+                </a>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div class="step-card">
+
+                <span class="step-number">
+                    Step 02
+                </span>
+
+
+                <h2>
+                    Follow Admin 2
+                </h2>
+
+                <a
+                    href="https://instagram.com/evariswrts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="step-btn"
+                >
+                    Follow @evariswrts
+                </a>
+
+            </div>
+
+              <!-- STEP 3 -->
+
+            <div class="step-card">
+
+                <span class="step-number">
+                    Step 03
+                </span>
+
+
+                <h2>
+                    Follow Admin 3
+                </h2>
+
+
+                <a
+                    href="https://instagram.com/author_arohini"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="step-btn"
+                >
+                    Follow @author_arohini
+                </a>
+
+            </div>
+
+
+            <!-- FINAL STEP -->
+
+            <div class="step-card final-step">
+
+                <span class="step-number">
+                    Final Step
+                </span>
+
+
+                <h2>
+                    Enter the Chaos
+                </h2>
+
+
+                <p>
+                    Follow the official Canon Chaos Instagram
+                    page and DM “Done” to officially join
+                    the Canon Crew.
+                </p>
+
+
+                <a
+                    href="https://instagram.com/canon_chaos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="step-btn"
+                >
+                    Follow @canon_chaos
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+        <div class="join-footer">
+            “Run by writers who believe stories deserve BEST 🎀.”
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

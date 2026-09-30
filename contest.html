@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contest Zone | Canon Chaos</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 25%,
+                    rgba(30, 58, 95, 0.5),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    180deg,
+                    #050F1E,
+                    #071426,
+                    #0B1E3D
+                );
+
+            color: #F5F9FF;
+
+            font-family: 'Poppins', sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 55px;
+
+            z-index: 1000;
+
+            background:
+                rgba(5, 15, 30, 0.45);
+
+            backdrop-filter: blur(16px);
+
+            -webkit-backdrop-filter: blur(16px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 30px;
+
+            letter-spacing: 3px;
+
+            color: #F5F9FF;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 38px;
+        }
+
+
+        .nav-links a {
+            color: #F5F9FF;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #D4B483;
+
+            text-shadow:
+                0 0 12px rgba(212,180,131,0.6);
+        }
+
+
+        .nav-join {
+            padding: 10px 22px;
+
+            border:
+                1px solid rgba(212,180,131,0.6);
+
+            border-radius: 30px;
+        }
+
+
+        .nav-join:hover {
+            background: #D4B483;
+
+            color: #071426 !important;
+
+            text-shadow: none !important;
+        }
+
+
+        /* =========================
+           STARS
+        ========================= */
+
+        .stars {
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        .stars span {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background: #F5F9FF;
+
+            opacity: 0.45;
+
+            animation:
+                twinkle 4s ease-in-out infinite;
+        }
+
+
+        .stars span:nth-child(1) {
+            top: 15%;
+            left: 10%;
+        }
+
+        .stars span:nth-child(2) {
+            top: 30%;
+            left: 25%;
+            animation-delay: 1s;
+        }
+
+        .stars span:nth-child(3) {
+            top: 20%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .stars span:nth-child(4) {
+            top: 50%;
+            left: 85%;
+            animation-delay: 1.5s;
+        }
+
+        .stars span:nth-child(5) {
+            top: 75%;
+            left: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .stars span:nth-child(6) {
+            top: 80%;
+            left: 80%;
+            animation-delay: 2.5s;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.15;
+
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform: scale(1.7);
+            }
+
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            min-height: 58vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding:
+                130px 20px 60px;
+        }
+
+
+        .eyebrow {
+
+            color: #D4B483;
+
+            font-size: 13px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(60px, 9vw, 110px);
+
+            font-weight: 600;
+
+            letter-spacing: 5px;
+
+            line-height: 0.95;
+
+            margin-bottom: 25px;
+
+            text-shadow:
+                0 0 30px
+                rgba(255,255,255,0.2);
+        }
+
+
+        .hero p {
+
+            max-width: 680px;
+
+            color: #C8D7EA;
+
+            font-size: 16px;
+
+            line-height: 1.9;
+        }
+
+
+        .quote {
+
+            margin-top: 25px;
+
+            font-family:
+                'Playfair Display',
+                serif;
+
+            font-style: italic;
+
+            font-size: 20px;
+
+            color: #D4B483;
+        }
+
+
+        /* =========================
+           CURRENT CONTEST
+        ========================= */
+
+        .contest-section {
+
+            width: 100%;
+
+            padding:
+                20px 6% 80px;
+        }
+
+
+        .contest-box {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 45px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.09),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(212,180,131,0.3);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.25);
+        }
+
+
+        .contest-label {
+
+            color: #D4B483;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+
+        .contest-title {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 58px;
+
+            color: #F5F9FF;
+
+            margin-bottom: 10px;
+        }
+
+
+        .contest-theme {
+
+            font-size: 19px;
+
+            color: #C8D7EA;
+
+            margin-bottom: 25px;
+        }
+
+
+        .countdown {
+
+            display: inline-block;
+
+            padding:
+                12px 22px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid
+                rgba(212,180,131,0.35);
+
+            color: #D4B483;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           RULES
+        ========================= */
+
+        .rules {
+
+            margin-top: 15px;
+        }
+
+
+        .rules h2,
+        .prizes h2 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 38px;
+
+            color: #D4B483;
+
+            margin-bottom: 15px;
+        }
+
+
+        .rules ul {
+
+            padding-left: 22px;
+
+            color: #C8D7EA;
+
+            line-height: 2;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           PRIZES
+        ========================= */
+
+        .prizes {
+
+            margin-top: 40px;
+        }
+
+
+        .prize-cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-top: 20px;
+        }
+
+
+        .prize-card {
+
+            padding: 25px;
+
+            min-height: 130px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            transition: 0.35s ease;
+        }
+
+
+        .prize-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(212,180,131,0.55);
+
+            box-shadow:
+                0 12px 30px
+                rgba(0,0,0,0.25);
+        }
+
+
+        .prize-card h3 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 28px;
+
+            color: #D4B483;
+
+            margin-bottom: 10px;
+        }
+
+
+        .prize-card p {
+
+            color: #C8D7EA;
+
+            line-height: 1.7;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           PREVIOUS WINNERS
+        ========================= */
+
+        .winner-section {
+
+            width: 100%;
+
+            padding:
+                50px 6% 100px;
+
+            text-align: center;
+        }
+
+
+        .winner-section h2 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(45px, 6vw, 70px);
+
+            color: #F5F9FF;
+
+            margin-bottom: 12px;
+        }
+
+
+        .winner-subtitle {
+
+            color: #C8D7EA;
+
+            font-size: 14px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .winner-gallery {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* NO PHOTOS — TEXT ONLY WINNER CARDS */
+
+        .winner-card {
+
+            min-height: 170px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(212,180,131,0.25);
+
+            backdrop-filter:
+                blur(16px);
+
+            -webkit-backdrop-filter:
+                blur(16px);
+
+            transition: 0.4s ease;
+        }
+
+
+        .winner-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(212,180,131,0.6);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,0.3);
+        }
+
+
+        .winner-place {
+
+            color: #D4B483;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+
+        .winner-card h3 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size: 28px;
+
+            color: #F5F9FF;
+
+            margin-bottom: 8px;
+        }
+
+
+        .winner-card p {
+
+            color: #C8D7EA;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 35px;
+
+            color:
+                rgba(245,249,255,0.4);
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 0 30px;
+            }
+
+
+            .nav-links {
+                gap: 22px;
+            }
+
+
+            .prize-cards,
+            .winner-gallery {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            nav {
+
+                height: auto;
+
+                padding:
+                    15px 18px;
+
+                flex-direction:
+                    column;
+
+                gap: 12px;
+            }
+
+
+            .logo {
+                font-size: 27px;
+            }
+
+
+            .nav-links {
+
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .nav-links a {
+
+                font-size: 11px;
+            }
+
+
+            .nav-join {
+                display: none;
+            }
+
+
+            .hero {
+
+                padding-top: 150px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 58px;
+            }
+
+
+            .contest-box {
+
+                padding: 30px 22px;
+            }
+
+
+            .contest-title {
+
+                font-size: 45px;
+            }
+
+
+            .prize-cards,
+            .winner-gallery {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .rules ul {
+
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND STARS
+    ========================= -->
+
+    <div class="stars">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Canon Chaos
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="crew.html">
+                Crew
+            </a>
+
+            <a href="community.html">
+                Community
+            </a>
+
+            <a href="contest.html" class="active">
+                Contest
+            </a>
+
+            <a href="join.html" class="nav-join">
+                Join
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            CANON CHAOS
+        </p>
+
+
+        <h1>
+            Contest Zone
+        </h1>
+
+
+        <p>
+            Where creativity meets chaos,
+            emotions become stories,
+            and imagination finds a place to shine.
+        </p>
+
+
+        <div class="quote">
+            "Every contest begins with a blank page."
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CURRENT CONTEST
+    ========================= -->
+
+    <section class="contest-section">
+
+        <div class="contest-box">
+
+            <p class="contest-label">
+                Ongoing Contest
+            </p>
+
+
+            <h2 class="contest-title">
+                ONE MISSING PAGE
+            </h2>
+
+
+            <p class="contest-theme">
+                Theme: Mystrey/Missing
+            </p>
+
+
+            <div
+                class="countdown"
+                id="countdown"
+            >
+                Contest Ends Soon
+            </div>
+
+
+            <!-- RULES -->
+
+            <div class="rules">
+
+                <h2>
+                    Rules
+                </h2>
+
+
+                <ul>
+
+                    <li>
+                        Stories must follow the given theme.
+                    </li>
+
+                    <li>
+                        Plagiarism is strictly prohibited.
+                    </li>
+
+                    <li>
+                        Submit before the deadline.
+                    </li>
+
+                    <li>
+                        Respect all writers and participants.
+                    </li>
+
+                    <li>
+                        Maximum creativity, emotions,
+                        and chaos encouraged.
+                    </li>
+
+                    <li>
+                        Send your entry as text on a picture.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRIZES -->
+
+            <div class="prizes">
+
+                <h2>
+                    Prizes
+                </h2>
+
+
+                <div class="prize-cards">
+
+
+                    <div class="prize-card">
+
+                        <h3>
+                            1st Place
+                        </h3>
+
+                        <p>
+                            Book Review<br>
+                            Author Portfolio<br>
+                            Certificate
+                        </p>
+
+                    </div>
+
+
+                    <div class="prize-card">
+
+                        <h3>
+                            2nd Place
+                        </h3>
+
+                        <p>
+                            Author Spotlight<br>
+                            Book recommendition<br>
+                            Certificate
+                        </p>
+
+                    </div>
+
+
+                    <div class="prize-card">
+
+                        <h3>
+                            3rd Place
+                        </h3>
+
+                        <p>
+                          POV Banners<br>  
+                          Reel Recommendation<br>
+                          Certificate
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PREVIOUS WINNERS
+    ========================= -->
+
+    <section class="winner-section">
+
+        <h2>
+            Previous Winners
+        </h2>
+
+
+        <p class="winner-subtitle">
+            Celebrating the writers who turned
+            their ideas into unforgettable stories.
+        </p>
+
+
+        <div class="winner-gallery">
+
+
+            <div class="winner-card">
+
+                <span class="winner-place">
+                    1st Winner
+                </span>
+
+                <h3>
+                    AROHINI
+                </h3>
+
+                <p>
+                    Mothersday contest
+                </p>
+
+            </div>
+
+
+            <div class="winner-card">
+
+                <span class="winner-place">
+                    2nd Winner
+                </span>
+
+                <h3>
+                    HONEY
+                </h3>
+
+                <p>
+                    Mothersday contest
+                </p>
+
+            </div>
+
+
+            <div class="winner-card">
+
+                <span class="winner-place">
+                    3rd Winner
+                </span>
+
+                <h3>
+                    RAVI
+                </h3>
+
+                <p>
+                    Mothersday contest
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 CANON CHAOS · WHERE WRITERS FIND THEIR PEOPLE.
+
+    </footer>
+
+
+    <!-- =========================
+         COUNTDOWN
+    ========================= -->
+
+    <script>
+
+        const endDate =
+            new Date("2026-10-07T23:59:59").getTime();
+
+
+        function updateCountdown() {
+
+            const now =
+                new Date().getTime();
+
+            const distance =
+                endDate - now;
+
+
+            const countdown =
+                document.getElementById("countdown");
+
+
+            if (distance <= 0) {
+
+                countdown.innerHTML =
+                    "Contest Closed";
+
+                return;
+            }
+
+
+            const days =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            countdown.innerHTML =
+                "Contest Ends In · " +
+                days +
+                " Days";
+
+        }
+
+
+        updateCountdown();
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+    </script>
+
+
+</body>
+
+</html>
